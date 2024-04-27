@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog Breed Prediction Result</title>
+    <!-- Add any necessary CSS stylesheets -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Prediction Result</h1>
+      <h2>Prediction for {{ file_name }}:</h2>
+      <ul>
+        {% for breed, probability in prediction.items() %}
+        <li>{{ breed }}: {{ "%.2f" % (probability * 100) }}%</li>
+        {% endfor %}
+      </ul>
+      <a href="/" class="btn btn-primary">Home</a>
+    </div>
+  </body>
+</html>
