@@ -4,8 +4,8 @@ from PIL import Image
 import torch.nn.functional as F
 from preprocessing.image_utils import preprocess_image , get_class_names
 
-def predict_image(image_path , model):
-    input_tensor = preprocess_image(image_path)
+def predict_image(image_data , model):
+    input_tensor = preprocess_image(image_data)
     with torch.no_grad():
         output = model(input_tensor)
     probabilities = F.softmax(output , dim=1)

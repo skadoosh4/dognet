@@ -1,8 +1,9 @@
+import io
 from torchvision import transforms
 from PIL import Image
 
-def preprocess_image(image_path):
-    image = Image.open(image_path)
+def preprocess_image(image_data):
+    image = Image.open(io.BytesIO(image_data))
 
     transformation = transforms.Compose([
         transforms.Resize((224,224)),
@@ -16,7 +17,7 @@ def preprocess_image(image_path):
 
 
 def get_class_names():
-    class_file = '/Users/sid/Documents/Projects/dognet/preprocessing/class_names.txt'
+    class_file = 'preprocessing/class_names.txt'
 
     with open(class_file , 'r') as f:
         class_names = [line.strip() for line in f.readlines()]

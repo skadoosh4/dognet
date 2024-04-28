@@ -4,7 +4,7 @@ from torchvision import models
 
 
 def load_model():
-    state_dict_path = '/Users/sid/Documents/Projects/dognet/model_state_dict.pth'
+    state_dict_path = 'model_state_dict.pth'
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = models.resnet50()
     num_ftrs = model.fc.in_features

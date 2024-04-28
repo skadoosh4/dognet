@@ -1,13 +1,14 @@
 import os
-from flask import Flask , render_template , request
+import secrets
+from flask import Flask , render_template , request , session
 from models.resnet import load_model
 from prediction.predict import predict_image
 
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'uploads'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+secret_key = secrets.token_hex(16)
+app.secret_key = secret_key
 
 model = load_model()
 
@@ -20,14 +21,13 @@ def home():
 @app.route('/predict' , methods = ['POST'])
 def predict():
     file = request.files['file']
-    file_path = os.path.join(app.config['UPLOAD_FOLDER'] , file.filename)
-    file.save(file_path)
-    prediction = predict_image(image_path=file_path , model=model)
+    session['file'] = file.read()
+    prediction = predict_image(image_data=session['file'] , model=model)
     return render_template('predict.html' , file_name = file.filename , prediction = prediction)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True , host="0.0.0.0" , port=8080)
 
 
 
