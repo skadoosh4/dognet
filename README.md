@@ -39,8 +39,8 @@ The web app is deployed on Azure and can be accessed at [your-web-app-url].
 
 ## 📸 Screenshots
 
-![Home Page](screenshots/home.png)
-![Prediction Result](screenshots/prediction.png)
+![Home Page](https://github.com/skadoosh4/dognet/blob/main/images/home.png)
+![Prediction Result](https://github.com/skadoosh4/dognet/blob/main/images/prediction.png)
 
 ## 📝 License
 
